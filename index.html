@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--视口文件-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <!--字体图标文件-->
+    <link rel="stylesheet" href="fonts/iconfont.css">
+    <!--公用样式文件-->
+    <link rel="stylesheet/less" href="less/base.less">
+    <!--页面样式文件-->
+    <link rel="stylesheet/less" href="less/index.less">
+    <!--less编译器-->
+    <script src="lib/less/less.js"></script>
+    <!--轮播图css文件-->
+    <link rel="stylesheet" href="lib/swiper/css/swiper.css">
+    <!--jquery文件-->
+    <script scr="js/jquery.min.js"></script>
+    <!--模板文件-->
+    <script src="js/template-native.js"></script>
+
+    <title>红旅动漫</title>
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<!--主页布局容器-->
+<div id="layout">
+    <!--网页头部-->
+    <header id="header">
+        <!--菜单按钮-->
+        <i class="icon-logo">&#xe60f;</i>
+        <!--标题栏-->
+        <a href="#">红旅动漫</a>
+        <!--搜索图标-->
+        <i class="icon-search">&#xe634;</i>
+    </header>
+    <!--轮播图-->
+    <section id="slide">
+        <!-- 主体 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="" alt=""></div>
+                <div class="swiper-slide"><img src="" alt=""></div>
+            </div>
+            <!-- 圆点 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+    <!--轮播图的图片模板-->
+    <!--<script type="text/template" id="slideId"></script>-->
+    <!--主体部分-->
+    <main id="content">
+        <!--tab栏-->
+        <div id="tab"></div>
+        <!--tab切换内容-->
+        <div id="tab-main"></div>
+    </main>
+</div>
+<script>
+    //    $.get({
+    //        url:'http://czdm.ittun.com/api/getlunbo',
+    ////        dataType:'jsonp',
+    //        success:function (result) {
+    //            console.log(result);
+    //        },
+    //        error:function (error) {
+    //            console.log(error);
+    //        }
+    //    });
+
+    $.ajax({
+        type: "get",
+        url: "http://www.chengguanhui.com/test.php",
+        dataType: "jsonp",
+        data: "name=ray&age=23",
+        jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+        jsonpCallback: "handleFn",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+        success: function (json) {
+            alert(json.name + json.age);
+        },
+        error: function () {
+            alert('fail');
+        }
+    });
+
+</script>
+<!--当前文件的js文件-->
+<script src="js/index.js"></script>
+<!--swiper的js文件-->
+<script src="lib/swiper/js/swiper.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop: true,
+        centeredSlides: true,
+        autoplay: 1000,
+        autoplayDisableOnInteraction: false
+    });
+
+</script>
+</body>
+</html>
